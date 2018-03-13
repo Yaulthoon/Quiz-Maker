@@ -1,5 +1,5 @@
 # Quiz-Maker
-WIP single-page application that will allow users to craft their own web quiz without requiring prior programming knowledge.  App is mostly complete.
+WIP single-page application that will allow users to craft their own web quiz without requiring prior programming knowledge.  App is nearing completion with the final page left to construct and QOL changes to implement.
 
 # Short-term goals
 1.  Clean up the spacing on the javascript file.
