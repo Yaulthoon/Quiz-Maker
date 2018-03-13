@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel= "stylesheet" type="text/css" href="quizCrafterCSS.css"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+</head>
+
+<body>
+<div ng-app="quizCraft">
+<div id = "logo">
+<a href="index.html"><img src ="quizCrafterLogo.png"></img></a>
+</div>
+<div id = "navigation">
+<a href="index.html">Home</a>
+<a href="templates.html">Templates</a>
+<a href="faq.html">FAQ</a>
+</div>
+<div id = "header">
+<img src ="quizCrafterLogo.png"></img>
+</div>
+<div id="quizMakerBackground">
+<div id="quizMakerForeground" ng-controller="colorMod">
+<h1>Make your own web quiz!</h1>
+<div class="button" ng-click="page('makeCSS.html')"> Get Started</div>
+
+</div>
+</div>
+</div>
+
+<script src="quizCrafterAngular.js"></script>
+
+
+</body>
+</html>

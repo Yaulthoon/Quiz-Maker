@@ -1,0 +1,208 @@
+body {
+	background-color: #ffffff;
+}
+
+#header {
+	position: absolute;
+	top: 18%;
+	left: 20%;
+	width: 60%;
+	height: 8%;
+}
+
+#header img {
+	position: absolute;
+	height: 80%;
+	width: 40%;
+	left: 30%;
+}
+
+#logo {
+    position: fixed;
+    left: 1%;
+    top: 0%;
+    height: 6%;
+	width: 98%;
+}
+
+#logo img {
+	height: 100%;
+	
+}
+
+#navigation {
+	box-sizing: border-box;
+	position: fixed;
+	top: 10%;
+	left: 10%;
+	width: 80%;
+	background-color: #00205e;
+	padding: 10px 0px 10px 0px;
+	border: 2px solid #4CAF50;
+	border-radius: 5px;
+}
+
+#navigation a {
+	font: 100% "Arial";
+	color: #ffffff;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+#quizMakerBackground {
+	position: absolute;
+	top: 27%;
+	left: 10%;
+	width: 80%;
+	height: auto;
+	background-color: #00205e;
+	border: 2px solid #4CAF50;
+	border-radius: 5px;
+}
+
+#quizMakerForeground {
+	box-sizing: border-box;
+	position: relative;
+	width: 96%;
+	height: auto;
+	margin: 2%;
+	background-color: #ffffff;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border-radius: 5px;
+}
+
+#quizMakerForeground h1 {
+	position: relative;
+	font: 20pt "Berlin Sans FB";
+	color: #00205e;
+	text-align: center;
+	margin-top: 0%;
+	margin-bottom: 20px;
+	width: 100%;
+	left: 0%;
+}
+
+#quizMakerForeground h2 {
+	display: block;
+	box-sizing: border-box;
+	position: relative;
+	font: 16pt "Berlin Sans FB";
+	color: #00205e;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	width: 100%;
+	float: left;
+	text-decoration: underline;
+}
+
+#quizMakerForeground h3 {
+	box-sizing: border-box;
+	padding: 5px;
+	margin: 0px 10px 0px 10px;
+	color: #4CAF50;
+}
+
+#quizMakerForeground h4 {
+	box-sizing: border-box;
+	padding: 5px;
+	margin: 0px 10px 10px 10px;
+}
+
+#quizMakerForeground h5 {
+	display: block;
+	box-sizing: border-box;
+	position: relative;
+	font: 16pt "Berlin Sans FB";
+	color: #990000;
+	text-align: center;
+	margin-top: -13px;
+	margin-bottom: 10px;
+	width: 100%;
+	text-decoration: underline;
+}
+
+#quizMakerForeground .sampleAnswers {
+	box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;
+	font-size: 100%;
+}
+
+#quizMakerForeground input[type="text"] {
+	position: relative;
+	box-sizing: border-box;
+	width: 90%;
+	margin: 10px 0px 10px 0px;
+	text-align: left;
+	padding: 1.5px 10px 1.5px 10px;
+}
+
+#quizMakerForeground input[type="radio"] {
+	box-sizing: border-box;
+	position: relative;
+	width: 8.3%;
+	margin: 10px 0px 10px 0px;
+	padding-right: 10px;
+}
+
+#quizMakerForeground p {
+	display: inline;
+	position: relative;
+	box-sizing: border-box;
+	padding: 5px 20px 5px 20px;
+	margin: 0px;
+	width: 100%;
+	left: 0%;
+	font-size: 100%;
+}
+	
+.button {
+	box-sizing: border-box;
+	position: relative;
+	margin: 10px 0px 5px 0px;
+	top: 100%;
+	width: 10%;
+	clear: left;
+	left: 45%;
+	padding: 5px;
+	color: #ffffff;
+	background-color: #4CAF50;
+	font: bold 100% "Arial";
+	text-align: center;
+	border: 2px solid #00205e;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.paragraphBox {
+	box-sizing: border-box;
+	position: relative;
+	width: 60%;
+	margin: 10px;
+	float: left;
+}
+
+.inputBox {
+	display: inline-block;
+	box-sizing: border-box;
+	position: relative;
+	margin: 10px;
+	float: left;
+	width: 4%;
+	text-align: center;
+}
+
+.addBox, .minusBox {
+	display: inline-block;
+	box-sizing: border-box;
+	position: relative;
+	margin: 10px;
+	float: left;
+	width: 2%;
+	text-align: center;
+	border: 2px solid #4CAF50;
+	border-radius: 5px;
+	cursor: pointer;
+}

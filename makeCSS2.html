@@ -1,0 +1,72 @@
+<html>
+<head>
+<link rel= "stylesheet" type="text/css" href="quizCrafterCSS.css"></link>
+</head>
+
+<body>
+<div id = "quizMakerForeground">
+
+<h1>Adjust the Style</h1>
+
+<h3 class = "test" ng-style = "savedPara()">Question area reference: 
+Background: red ({{pbRed}}), blue ({{pbBlue}}), green ({{pbGreen}}).  
+Text: red ({{ptRed}}), blue ({{ptBlue}}), green ({{ptGreen}}).</h3>
+
+<h4 class = "answerArea">
+<div class = "sampleAnswers">Sample of the answer area.</div>
+<div class = "sampleAnswers">Where multiple choice Answers</div>
+<div class = "sampleAnswers">may appear in your quiz depending</div>
+<div class = "sampleAnswers">on the number you choose.</div>
+</h4>
+
+<!--Answer Area Background-->
+<h2>Answer Area Background</h2>
+<div class = 'paragraphBox'>Answer area background <span style="color:red">
+(red value: 0-255)</span>:</div>
+<div class = 'minusBox' ng-Mousedown= "toggleColorDecrease(abRed, 'abRed', 0, 'answerArea')">-</div>
+<div class = 'inputBox' ng-model= 'abRed'>0</div>
+<div class = 'addBox' ng-Mousedown= "toggleColorIncrease(abRed, 'abRed', 0, 'answerArea')">+</div>
+
+<div class = 'paragraphBox'>Answer area background <span style="color:blue">
+(blue value: 0-255)</span>:</div>
+<div class = 'minusBox' ng-Mousedown= "toggleColorDecrease(abBlue, 'abBlue', 1, 'answerArea')">-</div>
+<div class = 'inputBox' ng-model= "abBlue">0</div>
+<div class = 'addBox' ng-Mousedown= "toggleColorIncrease(abBlue, 'abBlue', 1, 'answerArea')">+</div>
+
+<div class = 'paragraphBox'>Answer area background <span style="color:green">
+(green value: 0-255)</span>: </div>
+<div class = 'minusBox' ng-Mousedown= "toggleColorDecrease(abGreen, 'abGreen', 2, 'answerArea')">-</div>
+<div class = 'inputBox' ng-model= "abGreen">0</div>
+<div class = 'addBox' ng-Mousedown= "toggleColorIncrease(abGreen, 'abGreen', 2, 'answerArea')">+</div>
+
+<!--Answer Area Text Color-->
+<h2>Answer Area Text</h2>
+<div class = 'paragraphBox'>Answer area text <span style="color:red">
+(red value: 0-255)</span>:</div>
+<div class = 'minusBox' ng-Mousedown= "toggleColorDecrease(atRed, 'atRed', 3, 'answerArea')">-</div>
+<div class = 'inputBox' ng-model= 'atRed'>255</div>
+<div class = 'addBox' ng-Mousedown= "toggleColorIncrease(atRed, 'atRed', 3, 'answerArea')">+</div>
+
+<div class = 'paragraphBox'>Answer area text <span style="color:blue">
+(blue value: 0-255)</span>:</div>
+<div class = 'minusBox' ng-Mousedown= "toggleColorDecrease(atBlue, 'atBlue', 4, 'answerArea')">-</div>
+<div class = 'inputBox' ng-model ="atBlue">255</div>
+<div class = 'addBox' ng-Mousedown= "toggleColorIncrease(atBlue, 'atBlue', 4, 'answerArea')">+</div>
+
+<div class = 'paragraphBox'>Answer area text <span style="color:green">
+(green value: 0-255)</span>: </div>
+<div class = 'minusBox' ng-Mousedown= "toggleColorDecrease(atGreen, 'atGreen', 5, 'answerArea')">-</div>
+<div class = 'inputBox' ng-model= "atGreen">255</div>
+<div class = 'addBox' ng-Mousedown= "toggleColorIncrease(atGreen, 'atGreen', 5, 'answerArea')">+</div>
+
+<div class = 'button' ng-click= "page('questionairre.html')"> Continue </div>
+
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script src="quizCrafterAngular.js"></script>
+</body>
+
+</html>

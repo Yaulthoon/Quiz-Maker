@@ -1,0 +1,29 @@
+<html>
+
+<body>
+<div id ="quizMakerForeground">
+<h1 id = 'tester'>Please fill in your quiz based on the template below.</h1>
+
+<h5>Make sure to select the correct answer before continuing to the next question.</h5>
+
+
+<h3 class = "test">Question:  <input type = "text" name = "questionsText"></input></h3>
+
+<h4 class = "answerArea">
+<input type = "radio" name = "answers"></input><input type = "text" name = "answersText"></input>
+<input type = "radio" name = "answers"></input><input type = "text" name = "answersText"></input>
+<input type = "radio" name = "answers"></input><input type = "text" name = "answersText"></input>
+<input type = "radio" name = "answers"></input><input type = "text" name = "answersText"></input>
+</h4>
+
+<div class = 'button' ng-click="collectData()"> Continue </div>
+<div class = 'button' ng-click="possible()"> Print Question </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script src="quizCrafterAngular.js"></script>
+
+</div>
+</body>
+
+</html>
