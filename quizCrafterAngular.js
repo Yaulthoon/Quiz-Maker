@@ -24,7 +24,7 @@ function ($scope, $compile, $http, $window, $timeout) {
 		elem[i].style.color = "rgb(" + $scope.ptRed + "," + $scope.ptGreen + "," +
 		$scope.ptBlue + ")";
 		elem2[i].style.backgroundColor = "rgb(" + $scope.abRed + "," + $scope.abGreen + "," +
-		$scope.pbBlue + ")";
+		$scope.abBlue + ")";
 		elem2[i].style.color = "rgb(" + $scope.atRed + "," + $scope.atGreen + "," +
 		$scope.atBlue + ")";
 		}
