@@ -1,6 +1,7 @@
 var app = new angular.module("quizCraft", ["ngRoute"]);
 
-app.controller("colorMod",['$scope', '$compile', '$http', '$window', '$timeout', function ($scope, $compile, $http, $window, $timeout) {
+app.controller("colorMod",['$scope', '$compile', '$http', '$window', '$timeout', 
+function ($scope, $compile, $http, $window, $timeout) {
 	
 	$scope.pbRed = 255;
 	$scope.pbBlue = 255;
