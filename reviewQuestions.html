@@ -5,11 +5,12 @@
 
 <body>
 <div id = "quizMakerForeground">
-<div class = 'button'  ng-click = "page('questionairre.html')"> Return to questions </div>
-<div ng-include = 'reviewQuestions.html' onLoad = "printQuestions()" ng-style = 'savedPara'></div>
+<div class = 'buttonContainer'>
+<div class = 'buttonRight'  ng-click = "page('questionairre.html')"> Back to questions </div>
+<div class = 'buttonLeft'  ng-click = "page('printQuiz.html')"> Submit Quiz </div>
+</div>
 
-
-
+<div ng-include = 'reviewQuestions.html' onLoad = "printQuestions()" ng-style = 'savedPara()'></div>
 
 </div>
 <script src="quizCrafterAngular.js"></script>
