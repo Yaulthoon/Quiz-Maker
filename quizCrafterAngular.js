@@ -3,6 +3,7 @@ var app = new angular.module("quizCraft", ["ngRoute"]);
 app.controller("colorMod",['$scope', '$compile', '$http', '$window', '$timeout', 
 function ($scope, $compile, $http, $window, $timeout) {
 	
+	var longTimer = "";
 	$scope.pbRed = 255;
 	$scope.pbBlue = 255;
 	$scope.pbGreen = 255;
@@ -41,37 +42,27 @@ function ($scope, $compile, $http, $window, $timeout) {
 	})
 	};
 	
-    var d = document.getElementsByClassName('inputBox'),
-	isDown = false,
-    isLong = false,
-    target,                                        
-    longTID,
-	longTimer;                                     
+	$scope.input = document.getElementsByClassName('inputBox');
 
-	$scope.toggleColorIncrease = function (color, scopeVal, num, aspect) {
-		$window.addEventListener("mouseup", handleMouseUp);
-		isDown = true;                                  
-		isLong = false;                                   
-		target = this;                                   
-		clearTimeout(longTID);                           
-		longTID = setTimeout(longPressIncrease(color, scopeVal, num, aspect), 3000);  
+	$scope.toggleColorIncrease = function (color, scopeVal, num, aspect, time) {
+		$window.addEventListener("mouseup", handleMouseUp);                                                              
+		longPressIncrease(color, scopeVal, num, aspect, time);  
 		if (color === 255) {
 			return;
 		}
 		color += 1;
 		$scope[scopeVal] = color;
-		d[num].innerHTML = $scope[scopeVal];
+		$scope.input[num].innerHTML = $scope[scopeVal];
 	};
 
-	function longPressIncrease(color, scopeVal, num, aspect) {
-	console.log(color);
+	function longPressIncrease(color, scopeVal, num, aspect, time, sign) {
 	longTimer = setInterval(function () {
 	if (color === 255) {
 		return;
 	} else {
 		color += 1;
 		$scope[scopeVal] = color;
-		d[num].innerHTML = $scope[scopeVal];
+		$scope.input[num].innerHTML = $scope[scopeVal];
 		var elem = document.getElementsByClassName(aspect);
 		if (aspect === 'test') {
 			elem[0].style.backgroundColor = "rgb(" + $scope.pbRed + "," + 
@@ -85,32 +76,29 @@ function ($scope, $compile, $http, $window, $timeout) {
 			$scope.atBlue + ")";
 				}
 			}
-		}, 40);
+		}, time);
 	}
 
-	$scope.toggleColorDecrease = function (color, scopeVal, num, aspect) {
-		$window.addEventListener("mouseup", handleMouseUp);
-		isDown = true;                               
-		isLong = false;                                   
-		target = this;                                   
-		clearTimeout(longTID);                           
-		longTID = setTimeout(longPressDecrease(color, scopeVal, num, aspect), 3000);  
+	$scope.toggleColorDecrease = function (color, scopeVal, num, aspect, time) {
+		$window.addEventListener("mouseup", handleMouseUp);                          
+		longPressDecrease(color, scopeVal, num, aspect, time);  
 		if (color === 0) {
 			return;
 		}
 		color -= 1;
 		$scope[scopeVal] = color;
-		d[num].innerHTML = $scope[scopeVal];
+		$scope.input[num].innerHTML = $scope[scopeVal];
 	};
 
-	function longPressDecrease(color, scopeVal, num, aspect) {
-		longTimer = setInterval(function () {
+	function longPressDecrease(color, scopeVal, num, aspect, time) {
+		console.log(typeof time);
+		longTimer = setInterval (function () {
 		if (color === 0) {
 			return;
 		} else {
 			color -= 1;
 			$scope[scopeVal] = color;
-			d[num].innerHTML = $scope[scopeVal];
+			$scope.input[num].innerHTML = $scope[scopeVal];
 			var elem = document.getElementsByClassName(aspect);
 			if (aspect === 'test') {
 				elem[0].style.backgroundColor = "rgb(" + $scope.pbRed + "," + 
@@ -124,26 +112,12 @@ function ($scope, $compile, $http, $window, $timeout) {
 				$scope.atGreen + "," + $scope.atBlue + ")";
 				}
 			}
-		}, 40);
+		}, time);
 	}
 
 	function handleMouseUp() {
-		if (isDown && isLong) {                         
-			isDown = false;                                 
-			return;
-		}
-		if (isDown) {                                     
-			clearTimeout(longTID);  	  
-			clearInterval(longTimer);
-			isDown = false;
-			target = null;
-		}
-		if (isLong) {
 		clearInterval(longTimer);
-		isLong = false;
-		return;
-		}
-	};
+	}
 
 	$scope.answersKey = [];  
 	$scope.storeAnswersKey = []; 
@@ -172,7 +146,12 @@ function ($scope, $compile, $http, $window, $timeout) {
 			if (answers[i].checked) {
 				$scope.answersKey.push(answers[i].value);
 			}
-			$scope.printAnswersKey.push(answersText[i].value);	
+			$scope.printAnswersKey.push(answersText[i].value);
+			for ( l = 0; l < $scope.printAnswersKey.length; l++) {
+			if ($scope.printAnswersKey[l] === "") {
+				$scope.printAnswersKey.splice(l,1);
+			}
+			}
 		}
 		$scope.questionsKey.push(questions[0].value);
 		$scope.storeAnswersKey.push($scope.printAnswersKey);
@@ -183,15 +162,17 @@ function ($scope, $compile, $http, $window, $timeout) {
 	};
 
 	$scope.possible = function () {
-		if (typeof $scope.storeAnswersKey[0] === 'undefined') {
-			return;
-		}
-		$scope.printQuestions();
-		$scope.page('reviewQuestions.html');
-		var comp = ($compile)($scope.printQuestions())($scope);
-		$timeout(function () {angular.element
-		(document.getElementById("quizMakerForeground")).
-		append(($compile)($scope.printQuestions())($scope))}, 500);
+		$http.get('reviewQuestions.html').then(
+		function(response) {
+			$scope.myWelcome = response.data;}).then(
+		function(response) {
+			var html = $compile($scope.myWelcome)($scope);
+			document.getElementById('quizMakerForeground').innerHTML = "";
+			angular.element(document.getElementById("quizMakerForeground")).
+			append(html);
+			$scope.printQuestions();
+		});
+			
 	};
 
 	$scope.deleteQuestions = function ($event, $index) {
@@ -208,23 +189,19 @@ function ($scope, $compile, $http, $window, $timeout) {
 	};
 
 	$scope.printQuestions = function () {
-		if (typeof $scope.storeAnswersKey[0] === 'undefined') {
-			return;
-		}
 		for (i = 0; i < $scope.storeAnswersKey.length; i++) {
 			angular.element(document.getElementById("quizMakerForeground")).
 			append(($compile)("<h3 class = 'test'>" + 
-			$scope.questionsKey[i] + "</h3>" + "<h4 class = 'answerArea'>" +
-			"<div class = 'sampleAnswers'>" + $scope.storeAnswersKey[i][0] +
-			"</div>" + "<div class = 'sampleAnswers'>" + 
-			$scope.storeAnswersKey[i][1] + "</div>" + 
-			"<div class = 'sampleAnswers'>" + $scope.storeAnswersKey[i][2] + 
-			"</div>" + "<div class = 'sampleAnswers'>" + 
-			$scope.storeAnswersKey[i][3] + "</div></h4>" + 
-			"<div class = 'buttonRightRelative' " + 
+			$scope.questionsKey[i] + "</h3><h4 class = 'answerArea'></h4>")($scope));
+			for (l = 0; l < $scope.storeAnswersKey[i].length; l++) {
+				angular.element(document.getElementsByClassName("answerArea")[i]).
+				append(($compile)("<div class = 'sampleAnswers'>" + 
+				$scope.storeAnswersKey[i][l] + "</div></h4>")($scope));
+			}
+			angular.element(document.getElementById("quizMakerForeground")).
+			append(($compile)("<div class = 'buttonRightRelative' " + 
 			"ng-click = 'deleteQuestions($event, $index)' ng-value = " + 
 			i + ">Delete</div>")($scope));
-		};
-	console.log('successful print');
+		}
 	};
 }]);
